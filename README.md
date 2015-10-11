@@ -6,7 +6,7 @@
 
 Phase 1 - Build a network and realtime API for enabling machine-to-machine communications.
 
-Here are several quick screencasts that demostrate what you can do with Skynet:
+Here are several quick screencasts that demostrate what you can do with Meshblu (formelly known as Skynet):
 
 [Screencast 1: What is Skynet?](http://www.youtube.com/watch?v=cPs1JNFyXjk)
 
@@ -24,9 +24,9 @@ Here are several quick screencasts that demostrate what you can do with Skynet:
 Example
 
 ```
-var skynet = require('skynet');
+var meshblu = require('meshblu');
 
-var conn = skynet.createConnection({
+var conn = meshblu.createConnection({
   "uuid": "ad698900-2546-11e3-87fb-c560cb0ca47b",
   "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9",
   "protocol": "mqtt", // or "websocket"
@@ -63,21 +63,21 @@ conn.on('ready', function(data){
   conn.message({
     "devices": "*",
     "payload": {
-      "skynet":"online"
+      "meshblu":"online"
     },
     "qos": 0
   });
   conn.message({
     "devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
     "payload": {
-      "skynet":"online"
+      "meshblu":"online"
     },
     "qos": 0
   });
   conn.message({
     "devices": ["0d3a53...847b2cc", "11123...44567"],
     "payload": {
-      "skynet":"online"
+      "meshblu":"online"
     },
     "qos": 0
   });
@@ -87,12 +87,12 @@ conn.on('ready', function(data){
   });
 
 
-  // Event triggered when device loses connection to skynet
+  // Event triggered when device loses connection to meshblu
   conn.on('disconnect', function(data){
-    console.log('disconnected from skynet');
+    console.log('disconnected from meshblu');
   });
 
-  // Register a device (note: you can leave off the token to have skynet generate one for you)
+  // Register a device (note: you can leave off the token to have meshblu generate one for you)
   conn.register({
     "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9",
     "type": "drone"
@@ -130,7 +130,7 @@ conn.on('ready', function(data){
     console.log(data);
   });
 
-  // Skynet status
+  // Meshblu status
   conn.status(function (data) {
     console.log(data);
   });
